@@ -8,27 +8,27 @@ Put the `shared_preferences.js` script in the `common` folder, or wherever you w
 
 Import the script:
 ```javascript
-import * as prefs from "../common/shared_preferences";
+import { preferences, save, load } from "../common/shared_preferences";
 ```
 
 Store your values:
 ```javascript
-prefs.setItem("keep_screen_on", true);
-prefs.setItem("user_name", "John Doe");
-prefs.setItem("birth_year", 1988);
+preferences.keep_screen_on = true;
+preferences.user_name = "John Doe";
+preferences.birth_year = 1988;
 ```
 
 Read your values:
 ```javascript
-let keepScreenOn = prefs.getItem("keep_screen_on");
-let userName = prefs.getItem("user_name");
-let birthYear = prefs.getItem("birth_year");
+let keepScreenOn = preferences.keep_screen_on;
+let userName = preferences.user_name;
+let birthYear = preferences.birth_year;
 ```
 
 The script loads the data automatically on start, and saves it on close. You can, however, load or save (synchronously) on demand:
 ```javascript
-prefs.save();
-prefs.load();
+save();
+load();
 ```
 
 You can also enable debug logs or change storage file right within the script:
