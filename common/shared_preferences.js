@@ -1,22 +1,14 @@
-import * as fs from "fs";
+import { readFileSync, writeFileSync } from "fs";
 import { me } from "appbit";
 
 const DEBUG_MODE = false;
 const FILE_NAME = "shared_preferences.json";
 
-var map = {};
-
-export function setItem(key, value) {
-  map[key] = value;
-}
-
-export function getItem(key, value) {
-  return map[key];
-}
+export let preferences = {};
 
 export function load() {  
   try {
-    map = fs.readFileSync(FILE_NAME, "json");   
+    preferences = readFileSync(FILE_NAME, "json");   
     
     if (DEBUG_MODE) {
       console.log(FILE_NAME + " loaded:\n" + JSON.stringify(map));
@@ -31,7 +23,7 @@ export function load() {
 
 export function save() {  
   try {
-    fs.writeFileSync(FILE_NAME, map, "json");
+    writeFileSync(FILE_NAME, preferences, "json");
     
     if (DEBUG_MODE) {
       console.log(FILE_NAME + " saved:\n" + JSON.stringify(map));
