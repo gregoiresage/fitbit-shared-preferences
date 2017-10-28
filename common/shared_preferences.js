@@ -11,7 +11,7 @@ export function load() {
     preferences = readFileSync(FILE_NAME, "json");   
     
     if (DEBUG_MODE) {
-      console.log(FILE_NAME + " loaded:\n" + JSON.stringify(map));
+      console.log(FILE_NAME + " loaded:\n" + JSON.stringify(preferences));
     }    
     
     return true;
@@ -26,7 +26,7 @@ export function save() {
     writeFileSync(FILE_NAME, preferences, "json");
     
     if (DEBUG_MODE) {
-      console.log(FILE_NAME + " saved:\n" + JSON.stringify(map));
+      console.log(FILE_NAME + " saved:\n" + JSON.stringify(preferences));
     }   
     
     return true;
