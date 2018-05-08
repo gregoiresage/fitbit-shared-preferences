@@ -2,13 +2,13 @@ import { readFileSync, writeFileSync } from "fs";
 import { me } from "appbit";
 
 const DEBUG_MODE = false;
-const FILE_NAME = "shared_preferences.json";
+const FILE_NAME = "shared_preferences.cbor";
 
 export let preferences = {};
 
 export function load() {  
   try {
-    preferences = readFileSync(FILE_NAME, "json");   
+    preferences = readFileSync(FILE_NAME, "cbor");   
     
     if (DEBUG_MODE) {
       console.log(FILE_NAME + " loaded:\n" + JSON.stringify(preferences));
@@ -23,7 +23,7 @@ export function load() {
 
 export function save() {  
   try {
-    writeFileSync(FILE_NAME, preferences, "json");
+    writeFileSync(FILE_NAME, preferences, "cbor");
     
     if (DEBUG_MODE) {
       console.log(FILE_NAME + " saved:\n" + JSON.stringify(preferences));
