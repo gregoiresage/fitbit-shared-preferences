@@ -1,20 +1,20 @@
-import { readFileSync, writeFileSync } from "fs";
-import { me } from "appbit";
+import { readFileSync, writeFileSync } from 'fs'
+import { me } from 'appbit'
 
-const FILE_NAME = "shared_preferences.cbor";
+const FILE_NAME = 'a2b3b578-aa81-4ae9-93d0-8dca5216e095.cbor'
 
-export let preferences = {};
+export let preferences = {}
 
 try {
-  preferences = readFileSync(FILE_NAME, "cbor");   
-} catch(error) {
-  console.warn("Failed to load " + FILE_NAME + ". It is OK if no values were stored yet.");
+  preferences = readFileSync(FILE_NAME, 'cbor');
+} catch (error) {
+  console.warn('Failed to load ' + FILE_NAME + '. It is OK if no values were stored yet.');
 }
-  
-me.onunload = () => {
+
+me.addEventListener('unload', () => {
   try {
-    writeFileSync(FILE_NAME, preferences, "cbor"); 
-  } catch(error) {
-    console.error("Failed to save " + FILE_NAME);
+    writeFileSync(FILE_NAME, preferences, 'cbor');
+  } catch (error) {
+    console.error('Failed to save ' + FILE_NAME);
   }
-}
+})
